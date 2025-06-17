@@ -1,14 +1,15 @@
 import React from "react";
+// import RestaurantSidebar from "../components/Sidebar/RestaurantSidebar";
 
 import { Outlet } from "react-router-dom";
  
-import Adminsidebar from "../Components/sidebar/adminsidebar";
+import UserSidebar from "../Components/sidebar/UserSidebar";
 import Topbar from "../Components/shared/Topbar/Topbar";
 
-const AdminLayout = () => {
+const UserLayout = () => {
   return (
     <div className="flex">
-      <Adminsidebar />
+      <UserSidebar />
       <div className="flex-1">
         <Topbar />
         <Outlet />
@@ -17,4 +18,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default UserLayout;

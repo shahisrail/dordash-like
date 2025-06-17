@@ -2,12 +2,14 @@ import React from "react";
 // import RestaurantSidebar from "../components/Sidebar/RestaurantSidebar";
  
 import { Outlet } from "react-router-dom";
-import Topbar from "../Components/Topbar/Topbar";
+ 
+import ResturentSidebar from "../Components/sidebar/ResturentSidebar";
+import Topbar from "../Components/shared/Topbar/Topbar";
 
 const RestaurantLayout = () => {
   return (
     <div className="flex">
-      {/* <RestaurantSidebar /> */}
+      <ResturentSidebar />
       <div className="flex-1">
         <Topbar />
         <Outlet />

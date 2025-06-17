@@ -1,9 +1,11 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaStar, FaClock, FaMapMarkerAlt, FaHeart } from "react-icons/fa";
 
-const Home = () => {
+const Resturents = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState(new Set());
@@ -59,13 +61,29 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-4 animate-fadeInUp">
+            Available Restaurants 🍽️
+          </h1>
+          <p
+            className="text-xl text-blue-100 animate-fadeInUp"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Discover delicious food from top-rated restaurants
+          </p>
+        </div>
+      </div>
+
       {/* Restaurants Grid */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {restaurants.map((restaurant, index) => (
             <div
               key={restaurant._id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer group transform transition duration-300 hover:scale-[1.02]"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer group animate-fadeInUp"
+              style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => navigate(`/menu/${restaurant._id}`)}
             >
               {/* Restaurant Image */}
@@ -83,7 +101,7 @@ const Home = () => {
                   }}
                   className={`absolute top-4 right-4 p-2 rounded-full transition-all duration-300 ${
                     favorites.has(restaurant._id)
-                      ? "bg-[#FF3008] text-white"
+                      ? "bg-red-500 text-white"
                       : "bg-white/80 text-gray-600 hover:bg-white"
                   }`}
                 >
@@ -104,7 +122,7 @@ const Home = () => {
 
               {/* Restaurant Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#FF3008] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                   {restaurant.name}
                 </h3>
 
@@ -145,11 +163,8 @@ const Home = () => {
                   </span>
                 </div>
 
-                {/* Action Button - DoorDash Style */}
-                <button
-                  className="w-full py-3 rounded-xl font-semibold transition-transform duration-300 shadow-lg hover:shadow-xl"
-                  style={{ backgroundColor: "#FF3008", color: "#fff" }}
-                >
+                {/* Action Button */}
+                <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl">
                   View Menu
                 </button>
               </div>
@@ -173,4 +188,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Resturents;

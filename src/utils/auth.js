@@ -1,4 +1,11 @@
+ 
+
+export const getUserFromLocalStorage = () => {
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
+};
+
 export const getUserRole = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  return user?.role || "guest"; // "admin" | "restaurant" | "guest"
+  const user = getUserFromLocalStorage();
+  return user?.role || null;
 };
